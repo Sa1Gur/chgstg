@@ -1,6 +1,6 @@
 # chgstg
 
-Visual Studio 2015 project (using Visual Studio 2010 compiler)./n/r
+Visual Studio 2015 project (using Visual Studio 2010 compiler)
 
 Group of system utilities for Windows XP, Vista, 7, 8, 8.1 and 10. Originally created for our software setting up, but could be usefull for others.
 
