@@ -1,0 +1,116 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Russian (Russia) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_RUS)
+LANGUAGE LANG_RUSSIAN, SUBLANG_DEFAULT
+#pragma code_page(1251)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG1 DIALOGEX 0, 0, 250, 265
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION
+EXSTYLE WS_EX_TOPMOST | WS_EX_TOOLWINDOW
+FONT 10, "Courier", 0, 0, 0x0
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,200,7,40,14
+    CONTROL         "",IDC_chres,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,0,110,13
+    LISTBOX         IDC_chresDevModeEDIT,111,0,80,12,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "",IDC_chfont,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,12,200,13
+    CONTROL         "",IDC_chpower,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,24,246,13
+    CONTROL         "",IDC_chwal,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,36,200,13
+    CONTROL         "",IDC_chdraw,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,48,247,13
+    CONTROL         "",IDC_auto,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,60,200,13
+    CONTROL         "",IDC_asp,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,72,200,13
+    CONTROL         "",IDC_bg,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,84,200,13
+    CONTROL         "",IDC_uac,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,96,200,13
+    CONTROL         "",IDC_wu,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,108,200,13
+    CONTROL         "",IDC_wd,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,120,200,13
+    CONTROL         "",IDC_sc,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,132,247,13
+    CONTROL         "",IDC_guest,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,144,200,13
+    CONTROL         "",IDC_net,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,156,200,13
+    CONTROL         "",IDC_netIPADDRESS,"SysIPAddress32",WS_TABSTOP,150,170,100,13
+    CONTROL         "",IDC_netSUBNETMASK,"SysIPAddress32",WS_TABSTOP,150,184,100,13
+    CONTROL         "",IDC_netIPGATEWAY,"SysIPAddress32",WS_TABSTOP,150,198,100,13
+    LISTBOX         IDC_netEDIT,0,170,150,13,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_nameEDIT,0,184,150,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_workGroupEDIT,0,198,150,13,ES_AUTOHSCROLL
+    CONTROL         "",IDC_shareFolder,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,212,200,13
+    COMBOBOX        IDC_shareFolderEDIT,0,226,200,30,WS_VSCROLL
+    PUSHBUTTON      "+",IDADD_shareFolder,200,226,20,20
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_DIALOG1, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        TOPMARGIN, 7
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // Russian (Russia) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

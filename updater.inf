@@ -1,0 +1,32 @@
+[Version]
+Signature="$CHICAGO$"
+SetupClass=BASE
+ClassGUID={00000000-0000-0000-0000-000000000000} 
+
+[DefaultInstall]
+CopyFiles=centralpf.test1, centralpf.test2, centralpf.test3
+
+[centralpf.test1]
+ChgStg.ex1
+ChgStg64.ex1
+
+[centralpf.test2]
+ChgStg.ex1
+ChgStg64.ex1
+
+[centralpf.test3]
+ChgStg.ex1
+ChgStg64.ex1
+
+[DestinationDirs]
+centralpf.test1=-1,\\server\data\Пользователи Астрокарда\HOLTER\SNCRT\DISTRIBUT\PCIUSB
+centralpf.test2=-1,\\server\data\Пользователи Астрокарда\HOLTER\SNCRT\DISTRIBUT\USB
+centralpf.test3=-1,\\server\DATA\CDDISK.UPGRADE\HOLTER
+
+[SourceDisksFiles]
+ChgStg.ex1	= 1
+ChgStg64.ex1	= 2
+
+[SourceDisksNames]
+1 = , , , \Release\x86
+2 = , , , \Release\x64
