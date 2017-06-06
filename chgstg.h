@@ -3,7 +3,7 @@
 
 #define	IPLENGTH			16
 
-#define NumberOfOptions		15
+#define NumberOfOptions		16
 #define NumberOfLanguages	2
 
 #define _WIN32_DCOM

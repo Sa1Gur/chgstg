@@ -15,10 +15,11 @@ char optionsText[NumberOfOptions][NumberOfLanguages][256] =	{
 												{"Отключить значок \"Центр поддержки\" из области уведомлений", "Disable \"Support center\" notifications"},
 												{"Включить \"Гостя\" ",											"Enable \"Guest\" "},
 												{"Задать настройки сети",										"Set network settings"},
-												{"Расшарить папки",												"Share Folders"}
+												{"Расшарить папки",												"Share Folders"},
+												{"Заменить шелл",												"Custom shell" }
 											};
 
-char	optionsCommandPromt[NumberOfOptions]	= {'v', 'f', 'e', 'w', 'q', 'a', 'p', 'b', 'u', 'i', 'd', 'm', 'g', 'n', 's'};
+char	optionsCommandPromt[NumberOfOptions]	= {'v', 'f', 'e', 'w', 'q', 'a', 'p', 'b', 'u', 'i', 'd', 'm', 'g', 'n', 's', 'c'};
 bool	optionsAddData[NumberOfOptions]			= {
 													false,
 													false,
@@ -34,10 +35,11 @@ bool	optionsAddData[NumberOfOptions]			= {
 													false,
 													false,
 													false,
-													true
+													true,
+													false
 															};
 
-bool	options[NumberOfOptions] = {false, false, false, false, false, false, false, false, false, false};
+bool	options[NumberOfOptions] = {false, false, false, false, false, false, false, false, false, false, false};
 
 #define	numbUSERS	2
 #define	astro7		TEXT("astro7.bmp")//Windows Xp хочет .bmp
@@ -62,7 +64,6 @@ LRESULT CALLBACK DialogSetSN(HWND hdlg, UINT msg, WPARAM wParam, LPARAM lParam);
 BOOL	Initial(HWND hdlg, HWND hwndFocus, LPARAM lParam);
 void	NetInit(HWND hdlg, HWND hwndFocus, LPARAM lParam);
 BOOL	Menu(HWND hdlg, int id, HWND hwndCtl, UINT codeNotify);
-BOOL	Notifications(HWND hdlg, int id, HWND hwndCtl, UINT codeNotify);
 
 enum	{
 			NORMAL		= 0,
@@ -162,11 +163,14 @@ BOOL GetProcessList(TCHAR ProccessName[MAX_PATH])
 }
 
 int		APIENTRY _tWinMain(HINSTANCE	hInstance, HINSTANCE hPrevInstance, LPTSTR lpszCmdLine, int nCmdShow)
-{
-	//MessageBox(0, lpszCmdLine, 0, 0);
-	//sprintf(lpszCmdLine, "-s|1|F:\\TestShare|");
+{	
 	MSG		msg;
 	HWND	hWnd = CreateDialog(hInstance, MAKEINTRESOURCE(IDD_DIALOG1), NULL, (DLGPROC)DialogSetSN);
+
+	//lpszCmdLine = new char[1024];
+	//SetDlgItemText(hWnd, IDC_customShell, "explorer.exe");//C:\\APOLYECG\\adminRunner_.exe
+	//sprintf(lpszCmdLine, "-c|explorer.exe|");//C:\\APOLYECG\\adminRunner_.exe
+	//MessageBox(0, lpszCmdLine, 0, 0);
 
 	if (lpszCmdLine[0] == '-')
 	{
@@ -224,11 +228,16 @@ LRESULT CALLBACK DialogSetSN(HWND hdlg, UINT msg, WPARAM wParam, LPARAM lParam)
 	{
 		HANDLE_MSG(hdlg, WM_INITDIALOG,	Initial);
 		HANDLE_MSG(hdlg, WM_COMMAND,	Menu);
+	case WM_CLOSE:
+	{
+		DestroyWindow(hdlg);
+	}
+	break;
 	case WM_DESTROY:
-		{
-			PostQuitMessage(0);
-		}
-		break;
+	{
+		PostQuitMessage(0);
+	}
+	break;
 	default:
 		break;
 	}
@@ -574,21 +583,6 @@ void NetInit(HWND hdlg, HWND hwndFocus, LPARAM lParam)
 					iOutTextInfo += sprintf_s(&OutTextInfo[iOutTextInfo], SizeTextInfo - iOutTextInfo, "Broadcast Addr:     %ld\n", pIPAddrTable->table[i].dwBCastAddr);
 					iOutTextInfo += sprintf_s(&OutTextInfo[iOutTextInfo], SizeTextInfo - iOutTextInfo, "Re-assembly size:   %ld\n", pIPAddrTable->table[i].dwReasmSize);
 				}
-
-				/*ULONG NTEContext = 0;
-				ULONG NTEInstance = 0;
-			
-				UINT iaIPAddress;
-				UINT iaIPMask;
-			
-				iaIPAddress = inet_addr("192.168.0.5");
-				iaIPMask    = inet_addr("255.255.255.0");
-
-				dwRetVal = AddIPAddress(iaIPAddress, iaIPMask, pIPAddrTable->table[0].dwIndex,  &NTEContext, &NTEInstance);
-				if (dwRetVal != NO_ERROR)
-				{
-					iOutTextInfo += sprintf_s(&OutTextInfo[iOutTextInfo], SizeTextInfo - iOutTextInfo, "AddIPAddress call failed with %d\n", dwRetVal);
-				}*/
 			}
 			
 			if (pIPAddrTable)
@@ -596,118 +590,7 @@ void NetInit(HWND hdlg, HWND hwndFocus, LPARAM lParam)
 				free(pIPAddrTable);
 			}
 		}
-
-		//MessageBox(NULL, OutTextInfo, "Net Info", NULL);
-	}
-
-	/*STARTUPINFO cif;
-	ZeroMemory(&cif,sizeof(STARTUPINFO));
-	
-	SECURITY_ATTRIBUTES sa;
-	STARTUPINFO			si;
-	PROCESS_INFORMATION pi;
-	HANDLE				hPipeOutputRead,
-						hPipeOutputWrite,
-						hPipeErrorsRead,
-						hPipeErrorsWrite;
-	BOOL				Res,
-						bTest;
-	char				env[100],
-						szBuffer[2048] = "",
-						szConnections[2048];
-	DWORD				dwNumberOfBytesRead,
-						place = 0;
-	
-	sa.nLength				= sizeof(SECURITY_ATTRIBUTES);
-	sa.bInheritHandle		= TRUE;
-	sa.lpSecurityDescriptor	= NULL;
-	CreatePipe(&hPipeOutputRead, &hPipeOutputWrite, &sa, 0);
-	CreatePipe(&hPipeErrorsRead, &hPipeErrorsWrite, &sa, 0);
-	ZeroMemory(&env, sizeof(env));
-	ZeroMemory(&si, sizeof(si));
-	ZeroMemory(&pi, sizeof(pi));
-	si.cb			= sizeof(si);
-	si.dwFlags		= STARTF_USESHOWWINDOW | STARTF_USESTDHANDLES;
-	si.wShowWindow	= SW_HIDE;
-	si.hStdInput	= 0;
-	si.hStdOutput	= hPipeOutputWrite;
-	si.hStdError	= hPipeErrorsWrite;
-	
-	Res	= CreateProcess(NULL, "netsh interface ipv4 show ipaddress", NULL, NULL, true, CREATE_NEW_CONSOLE | HIGH_PRIORITY_CLASS, &env, NULL, &si, &pi);
-	
-	Sleep(1000);
-	bTest	= ReadFile(hPipeOutputRead, szBuffer, 2048, &dwNumberOfBytesRead, NULL);
-	
-
-	OemToChar(szBuffer, szConnections);
-
-	char* res;
-	
-	do//определяем язык + ищем сетевые подключения
-	{
-		res = strstr(szConnections, Interface[language]);
-
-		if (res == NULL)
-		{
-			language++;
-			if (language == NumberOfLanguages)
-			{
-				language = 0;
-				break;
-			}
-		}
-	}
-	while (res == NULL);
-
-	while (res)
-	{
-		int end = -1;
-
-		for (int i = 0; i < 128; i++)
-		{
-			if (res[i] == ':')
-			{
-				int length = -1;
-				for (int j = i - 1; j >= 0; j--)
-				{
-					if ((res[j] < '0') || ('9' < res[j]))
-					{
-						length = j + 1;
-						break;
-					}
-				}
-				NetworkConnectionIndex[NetworkConnectionQuantity] = atoi(&res[length]);
-				
-				for (int j = i + 1; j < 128; j++)
-				{
-					if ((res[j] == 13) && (res[j + 1] == 10))
-					{
-						end = j - 1;
-						break;
-					}
-				}
-				if (end != -1)
-				{
-					memmove_s(NetworkConnectionName[NetworkConnectionQuantity], MAX_PATH, &res[i + 2], end - i - 1);
-				}
-				else
-				{
-					sprintf_s(NetworkConnectionName[NetworkConnectionQuantity], MAX_PATH, "ERROR_DETECTING_CONNECTION_NAME");
-				}
-				NetworkConnectionQuantity++;
-				break;
-			}
-		}
-		
-		if (end != -1)
-		{
-			res = strstr(&res[end], Interface[language]);
-		}
-		else
-		{
-			res = NULL;
-		}
-	}*/
+	}	
 
 	if (NetworkConnectionQuantity != 0)
 	{
@@ -729,6 +612,16 @@ void NetInit(HWND hdlg, HWND hwndFocus, LPARAM lParam)
 	SendMessage(GetDlgItem(hdlg, IDC_netIPADDRESS),		WM_SETTEXT, NULL, (LPARAM)"192.168.2.110");
 	SendMessage(GetDlgItem(hdlg, IDC_netSUBNETMASK),	WM_SETTEXT, NULL, (LPARAM)"255.255.0.0");
 	SendMessage(GetDlgItem(hdlg, IDC_netIPGATEWAY),		WM_SETTEXT, NULL, (LPARAM)"192.168.0.1");
+
+	SetDlgItemText(hdlg, IDC_customShell, "C:\\APOLYECG\\adminRunner_.exe");
+
+	char	resultString[MAX_PATH] = "";
+	Registry_GetString(HKEY_LOCAL_MACHINE, "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon", "Shell", resultString);
+	if (!strcmp(resultString, "explorer.exe"))
+		SetDlgItemText(hdlg, IDC_customShell, "C:\\APOLYECG\\adminRunner_.exe");
+	else
+		SetDlgItemText(hdlg, IDC_customShell, "explorer.exe");
+	//Registry_SetString(HKEY_LOCAL_MACHINE, "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon", "Shell", customPath);//explorer.exe
 }
 
 bool Evaluate(HWND hWnd)
@@ -2276,6 +2169,47 @@ int GlobalFunction(int fIndex, HWND hdlg, BYTE flag, TCHAR *strBuffer)
 						LocalFree(pACL);
 					if (pSD) 
 						LocalFree(pSD);
+				}
+				break;
+			}
+		}
+		break;
+	case 15://void CustomShell()
+		{
+			char	commandLine[MAX_PATH] = "",
+					customPath[MAX_PATH] = "";
+
+			switch (flag)
+			{
+			case TO_CMD:
+				{
+					retVal += _stprintf_s(&strBuffer[retVal], MAX_PATH, TEXT("%d%c"), SendMessage(GetDlgItem(hdlg, IDC_customShell), LB_GETCURSEL, 0, 0), divSign);
+					retVal += GetWindowText(GetDlgItem(hdlg, IDC_customShell), &strBuffer[retVal], sizeof(customPath));
+					(TCHAR)strBuffer[retVal] = divSign;
+					retVal++;					
+				}
+				break;
+			case FROM_CMD:
+				{
+					int iPos = retVal;
+					while ((strBuffer[iPos] != divSign))
+					{
+						iPos++;
+					}
+
+					_sntprintf_s(customPath, iPos - retVal + 1, _TRUNCATE, TEXT("%s"), &strBuffer[retVal]);
+					SetDlgItemText(hdlg, IDC_customShell, customPath);
+					retVal = iPos + 1;					
+				}
+				break;
+			case NORMAL:
+				{
+					//if ()
+					{
+						GetDlgItemText(hdlg, IDC_customShell, customPath, MAX_PATH);
+						//MessageBox(0, customPath, 0, 0);
+						Registry_SetString(HKEY_LOCAL_MACHINE, "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon", "Shell", customPath);//explorer.exe
+					}
 				}
 				break;
 			}
