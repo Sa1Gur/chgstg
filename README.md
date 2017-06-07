@@ -35,3 +35,5 @@ Capability:
 14) Set network settings
 
 15) Share Folders
+
+16) Custom Shell
