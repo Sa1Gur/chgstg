@@ -2204,12 +2204,13 @@ int GlobalFunction(int fIndex, HWND hdlg, BYTE flag, TCHAR *strBuffer)
 				break;
 			case NORMAL:
 				{
-					//if ()
-					{
-						GetDlgItemText(hdlg, IDC_customShell, customPath, MAX_PATH);
-						//MessageBox(0, customPath, 0, 0);
-						Registry_SetString(HKEY_LOCAL_MACHINE, "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon", "Shell", customPath);//explorer.exe
-					}
+					GetDlgItemText(hdlg, IDC_customShell, customPath, MAX_PATH);
+					//MessageBox(0, customPath, 0, 0);
+					Registry_SetString(HKEY_CURRENT_USER, "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon", "Shell", customPath);
+
+					Registry_SetDword(HKEY_CURRENT_USER, "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System", "DisableChangePassword",		1);
+					Registry_SetDword(HKEY_CURRENT_USER, "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System", "DisableLockWorkstation",	1);
+					Registry_SetDword(HKEY_CURRENT_USER, "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System", "DisableTaskMgr",			1);
 				}
 				break;
 			}
@@ -2232,7 +2233,7 @@ void Registry_SetDword(HKEY Branch, char* KeyPath, char* Key, DWORD value)
 	error = RegOpenKeyEx(Branch, KeyPath, NULL, KEY_SET_VALUE, &hkey);
 	if (error != ERROR_SUCCESS)
 	{
-		RegCreateKeyEx(HKEY_LOCAL_MACHINE, KeyPath, 0, classname, REG_OPTION_NON_VOLATILE, KEY_ALL_ACCESS, NULL, &hkey, &dwDisposition);
+		error = RegCreateKeyEx(Branch, KeyPath, 0, classname, REG_OPTION_NON_VOLATILE, KEY_ALL_ACCESS, NULL, &hkey, &dwDisposition);
 	}
 	RegSetValueEx(hkey, Key, NULL, REG_DWORD, (unsigned char*)&value, 4);
 	RegCloseKey(hkey);

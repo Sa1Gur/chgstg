@@ -36,4 +36,7 @@ Capability:
 
 15) Share Folders
 
-16) Custom Shell
+16) Custom Shell + "W + L", Taskmng disabling
+We can use HKLM or HKCU\Software\Windows NT\Curent Version\Winlogon Shell key
+If we use HKLM to open standard Shell before system restart we have to rewrite Shell key back ("explorer.exe") before run explorer.exe as Shell.
+
