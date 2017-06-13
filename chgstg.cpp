@@ -1,22 +1,22 @@
-#include "chgstg.h"
+п»ї#include "chgstg.h"
 
 char optionsText[NumberOfOptions][NumberOfLanguages][256] =	{
-												{"Установить видеорежим",										"Set video mode to"},
-												{"Сделать экранный шрифт крупным (120 точек/дюйм)",				"120 dpi"},
-												{"Отключить заставку и энергосберегающий режим монитора",		"Switch Off Screen Saver And Energy Saving Mode"},
-												{"Установить на Рабочий стол обои Astro7",						"Set Astro7 BackGround"},
-												{"Режим быстрой прорисовки",									"Fast drawing"},
-												{"Отключение автозапуска flash-накопителей",					"Switch Off Autorun"},
-												{"Сервисный процесс",											"Service Proccess"},
-												{"Изменить фон загрузки/выключения Windows",					"Switch Windows logon(off) background"},
-												{"Отключить контроль учетной записи",							"Disable UAC"},
-												{"Отключить обновление Windows",								"Disable Windows update"},
-												{"Отключить защитник Windows",									"Disable Windows defender"},
-												{"Отключить значок \"Центр поддержки\" из области уведомлений", "Disable \"Support center\" notifications"},
-												{"Включить \"Гостя\" ",											"Enable \"Guest\" "},
-												{"Задать настройки сети",										"Set network settings"},
-												{"Расшарить папки",												"Share Folders"},
-												{"Заменить шелл",												"Custom shell" }
+												{"РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РІРёРґРµРѕСЂРµР¶РёРј",										"Set video mode to"},
+												{"РЎРґРµР»Р°С‚СЊ СЌРєСЂР°РЅРЅС‹Р№ С€СЂРёС„С‚ РєСЂСѓРїРЅС‹Рј (120 С‚РѕС‡РµРє/РґСЋР№Рј)",				"120 dpi"},
+												{"РћС‚РєР»СЋС‡РёС‚СЊ Р·Р°СЃС‚Р°РІРєСѓ Рё СЌРЅРµСЂРіРѕСЃР±РµСЂРµРіР°СЋС‰РёР№ СЂРµР¶РёРј РјРѕРЅРёС‚РѕСЂР°",		"Switch Off Screen Saver And Energy Saving Mode"},
+												{"РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РЅР° Р Р°Р±РѕС‡РёР№ СЃС‚РѕР» РѕР±РѕРё Astro7",						"Set Astro7 BackGround"},
+												{"Р РµР¶РёРј Р±С‹СЃС‚СЂРѕР№ РїСЂРѕСЂРёСЃРѕРІРєРё",									"Fast drawing"},
+												{"РћС‚РєР»СЋС‡РµРЅРёРµ Р°РІС‚РѕР·Р°РїСѓСЃРєР° flash-РЅР°РєРѕРїРёС‚РµР»РµР№",					"Switch Off Autorun"},
+												{"РЎРµСЂРІРёСЃРЅС‹Р№ РїСЂРѕС†РµСЃСЃ",											"Service Proccess"},
+												{"РР·РјРµРЅРёС‚СЊ С„РѕРЅ Р·Р°РіСЂСѓР·РєРё/РІС‹РєР»СЋС‡РµРЅРёСЏ Windows",					"Switch Windows logon(off) background"},
+												{"РћС‚РєР»СЋС‡РёС‚СЊ РєРѕРЅС‚СЂРѕР»СЊ СѓС‡РµС‚РЅРѕР№ Р·Р°РїРёСЃРё",							"Disable UAC"},
+												{"РћС‚РєР»СЋС‡РёС‚СЊ РѕР±РЅРѕРІР»РµРЅРёРµ Windows",								"Disable Windows update"},
+												{"РћС‚РєР»СЋС‡РёС‚СЊ Р·Р°С‰РёС‚РЅРёРє Windows",									"Disable Windows defender"},
+												{"РћС‚РєР»СЋС‡РёС‚СЊ Р·РЅР°С‡РѕРє \"Р¦РµРЅС‚СЂ РїРѕРґРґРµСЂР¶РєРё\" РёР· РѕР±Р»Р°СЃС‚Рё СѓРІРµРґРѕРјР»РµРЅРёР№", "Disable \"Support center\" notifications"},
+												{"Р’РєР»СЋС‡РёС‚СЊ \"Р“РѕСЃС‚СЏ\" ",											"Enable \"Guest\" "},
+												{"Р—Р°РґР°С‚СЊ РЅР°СЃС‚СЂРѕР№РєРё СЃРµС‚Рё",										"Set network settings"},
+												{"Р Р°СЃС€Р°СЂРёС‚СЊ РїР°РїРєРё",												"Share Folders"},
+												{"Р—Р°РјРµРЅРёС‚СЊ С€РµР»Р»",												"Custom shell" }
 											};
 
 char	optionsCommandPromt[NumberOfOptions]	= {'v', 'f', 'e', 'w', 'q', 'a', 'p', 'b', 'u', 'i', 'd', 'm', 'g', 'n', 's', 'c'};
@@ -42,14 +42,14 @@ bool	optionsAddData[NumberOfOptions]			= {
 bool	options[NumberOfOptions] = {false, false, false, false, false, false, false, false, false, false, false};
 
 #define	numbUSERS	2
-#define	astro7		TEXT("astro7.bmp")//Windows Xp хочет .bmp
+#define	astro7		TEXT("astro7.bmp")//Windows Xp С…РѕС‡РµС‚ .bmp
 #define divSign		TEXT('|')
 
 TCHAR	path[MAX_PATH]									= TEXT("");
-char	Interface[NumberOfLanguages][10]				= {"Интерфейс",									"Interface"},
-		Connection[NumberOfLanguages][12]				= {"Подключение",								"Connection"},
-		ConnectionsNotDetected[NumberOfLanguages][48]	= {"Подключения по локальной сети не найдены",	"Local Connection Not Found"};
-int		language = 0;//Выбираем язык для диалогов
+char	Interface[NumberOfLanguages][10]				= {"РРЅС‚РµСЂС„РµР№СЃ",									"Interface"},
+		Connection[NumberOfLanguages][12]				= {"РџРѕРґРєР»СЋС‡РµРЅРёРµ",								"Connection"},
+		ConnectionsNotDetected[NumberOfLanguages][48]	= {"РџРѕРґРєР»СЋС‡РµРЅРёСЏ РїРѕ Р»РѕРєР°Р»СЊРЅРѕР№ СЃРµС‚Рё РЅРµ РЅР°Р№РґРµРЅС‹",	"Local Connection Not Found"};
+int		language = 0;//Р’С‹Р±РёСЂР°РµРј СЏР·С‹Рє РґР»СЏ РґРёР°Р»РѕРіРѕРІ
 
 char	NetworkConnectionName[MAX_PATH][256],
 		NetworkAdapterName[MAX_PATH][256];
@@ -692,7 +692,7 @@ bool Evaluate(HWND hWnd)
 	}
 	else
 	{
-		//Мы уже под администратором
+		//РњС‹ СѓР¶Рµ РїРѕРґ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂРѕРј
 		//MessageBox(hWnd, TEXT("The process is running as administrator"), TEXT("UAC"), MB_OK);
 	}
 
@@ -787,7 +787,7 @@ BOOL Menu(HWND hdlg, int id, HWND hwndCtl, UINT codeNotify)
 					}
 					else
 					{
-						break;//Уходим на повышение прав
+						break;//РЈС…РѕРґРёРј РЅР° РїРѕРІС‹С€РµРЅРёРµ РїСЂР°РІ
 					}
 				}
 			}
@@ -957,13 +957,13 @@ int GlobalFunction(int fIndex, HWND hdlg, BYTE flag, TCHAR *strBuffer)
 						DEVMODE dm;
 						ZeroMemory(&dm,		sizeof(DEVMODE));
 						dm.dmSize			= sizeof(DEVMODE);
-						dm.dmBitsPerPel		= hDevModlist[lDevModlist - nDevMode - 1].dmBitsPerPel;	//Глубина цвета
-						dm.dmPelsWidth		= hDevModlist[lDevModlist - nDevMode - 1].dmPelsWidth;	//Ширина монитора (в пикселях)
-						dm.dmPelsHeight		= hDevModlist[lDevModlist - nDevMode - 1].dmPelsHeight;	//Высота монитора (в пикселях)
+						dm.dmBitsPerPel		= hDevModlist[lDevModlist - nDevMode - 1].dmBitsPerPel;	//Р“Р»СѓР±РёРЅР° С†РІРµС‚Р°
+						dm.dmPelsWidth		= hDevModlist[lDevModlist - nDevMode - 1].dmPelsWidth;	//РЁРёСЂРёРЅР° РјРѕРЅРёС‚РѕСЂР° (РІ РїРёРєСЃРµР»СЏС…)
+						dm.dmPelsHeight		= hDevModlist[lDevModlist - nDevMode - 1].dmPelsHeight;	//Р’С‹СЃРѕС‚Р° РјРѕРЅРёС‚РѕСЂР° (РІ РїРёРєСЃРµР»СЏС…)
 						dm.dmFields			= DM_BITSPERPEL | DM_PELSWIDTH | DM_PELSHEIGHT | DM_DISPLAYFREQUENCY;
 
 						LONG result = ChangeDisplaySettings(&dm, CDS_UPDATEREGISTRY);
-						if (result != DISP_CHANGE_SUCCESSFUL)										//Сам процесс изменения конфигурации графики
+						if (result != DISP_CHANGE_SUCCESSFUL)										//РЎР°Рј РїСЂРѕС†РµСЃСЃ РёР·РјРµРЅРµРЅРёСЏ РєРѕРЅС„РёРіСѓСЂР°С†РёРё РіСЂР°С„РёРєРё
 						{
 							TCHAR	errorText[256] = TEXT("");
 							_stprintf_s(errorText, sizeof(errorText) - 1, TEXT("ChangeDisplaySettings Error %d\n"), result);
@@ -1073,7 +1073,7 @@ int GlobalFunction(int fIndex, HWND hdlg, BYTE flag, TCHAR *strBuffer)
 					TCHAR	szPath[MAX_PATH];
 					if (SUCCEEDED(SHGetFolderPath(NULL, CSIDL_MYPICTURES|CSIDL_FLAG_CREATE, NULL, SHGFP_TYPE_CURRENT, szPath)))
 					{
-						PathAppend(szPath, astro7);//WindowsXP хочет bmp
+						PathAppend(szPath, astro7);//WindowsXP С…РѕС‡РµС‚ bmp
 					}
 					CopyFile(astro7, szPath, FALSE);
 					Registry_SetString(HKEY_CURRENT_USER, "Control Panel\\Desktop", "WallpaperStyle",	"2");
@@ -1131,7 +1131,7 @@ int GlobalFunction(int fIndex, HWND hdlg, BYTE flag, TCHAR *strBuffer)
 				break;
 			case NORMAL:
 				{
-					Registry_SetDword(HKEY_LOCAL_MACHINE, "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\policies\\Explorer", "NoDriveTypeAutoRun", 149);//параметр запрещающий запуск флешнакопителей
+					Registry_SetDword(HKEY_LOCAL_MACHINE, "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\policies\\Explorer", "NoDriveTypeAutoRun", 149);//РїР°СЂР°РјРµС‚СЂ Р·Р°РїСЂРµС‰Р°СЋС‰РёР№ Р·Р°РїСѓСЃРє С„Р»РµС€РЅР°РєРѕРїРёС‚РµР»РµР№
 				}
 				break;
 			}
@@ -1296,7 +1296,7 @@ int GlobalFunction(int fIndex, HWND hdlg, BYTE flag, TCHAR *strBuffer)
 		break;	
 	case 11:
 		{
-			//Отключить значок "Центр поддержки" из области уведомлений  
+			//РћС‚РєР»СЋС‡РёС‚СЊ Р·РЅР°С‡РѕРє "Р¦РµРЅС‚СЂ РїРѕРґРґРµСЂР¶РєРё" РёР· РѕР±Р»Р°СЃС‚Рё СѓРІРµРґРѕРјР»РµРЅРёР№  
 			switch (flag)
 			{
 			case TO_CMD:
@@ -1311,7 +1311,7 @@ int GlobalFunction(int fIndex, HWND hdlg, BYTE flag, TCHAR *strBuffer)
 			}
 		}
 		break;
-	case 12://Включить Гостя
+	case 12://Р’РєР»СЋС‡РёС‚СЊ Р“РѕСЃС‚СЏ
 		{
 			switch (flag)
 			{
@@ -1329,7 +1329,7 @@ int GlobalFunction(int fIndex, HWND hdlg, BYTE flag, TCHAR *strBuffer)
 			
 					if (GetComputerName(computerName, &compNameSize))
 					{
-						// Получим SID локальной машины
+						// РџРѕР»СѓС‡РёРј SID Р»РѕРєР°Р»СЊРЅРѕР№ РјР°С€РёРЅС‹
 						PSID pSidLocalMashine	= NULL;
 
 						LPTSTR domainName;
@@ -1355,7 +1355,7 @@ int GlobalFunction(int fIndex, HWND hdlg, BYTE flag, TCHAR *strBuffer)
 								DWORD ssa2 = *GetSidSubAuthority(pSidLocalMashine, 2);
 								DWORD ssa3 = *GetSidSubAuthority(pSidLocalMashine, 3);
 						
-								// И соберем из него SID "Гостя"
+								// Р СЃРѕР±РµСЂРµРј РёР· РЅРµРіРѕ SID "Р“РѕСЃС‚СЏ"
 								if (AllocateAndInitializeSid(&identAuth, 5, ssa0, ssa1, ssa2, ssa3, DOMAIN_USER_RID_GUEST, NULL, NULL, NULL, &pSid))
 								{
 									result = TRUE;
@@ -1422,7 +1422,7 @@ int GlobalFunction(int fIndex, HWND hdlg, BYTE flag, TCHAR *strBuffer)
 													level = 1008;			
 											
 													userInfo.usri1008_flags = UF_SCRIPT|UF_PASSWD_NOTREQD|UF_DONT_EXPIRE_PASSWD;
-													//userInfo.usri1008_flags = UF_SCRIPT|UF_ACCOUNTDISABLE;//отключение записи
+													//userInfo.usri1008_flags = UF_SCRIPT|UF_ACCOUNTDISABLE;//РѕС‚РєР»СЋС‡РµРЅРёРµ Р·Р°РїРёСЃРё
 													ret = NetUserSetInfo(NULL, userName, level, (LPBYTE)&userInfo, &parm_err);
 													if (ret != NERR_Success)
 													{
@@ -1462,7 +1462,7 @@ int GlobalFunction(int fIndex, HWND hdlg, BYTE flag, TCHAR *strBuffer)
 					FreeSid(pSid);
 		
 					//////////////////////AutoLogon
-					if ((int)ShellExecute(NULL, "open", "control", "userpasswords2", NULL, SW_SHOWNORMAL) <= 32)//Проверка на ошибки
+					if ((int)ShellExecute(NULL, "open", "control", "userpasswords2", NULL, SW_SHOWNORMAL) <= 32)//РџСЂРѕРІРµСЂРєР° РЅР° РѕС€РёР±РєРё
 					{				
 						//MessageBox(NULL, TEXT("Unable to run control userpasswords2"), TEXT("Error"), NULL);//In embedded we dont need that
 					}
@@ -1764,7 +1764,7 @@ int GlobalFunction(int fIndex, HWND hdlg, BYTE flag, TCHAR *strBuffer)
 														pclsObj->Get(Description, 0, &desc, 0, 0);
 														SysFreeString(Description);
 												
-														BSTR AdapterId = SysAllocString(L"InterfaceIndex");//Не поддерживается в Windows XP
+														BSTR AdapterId = SysAllocString(L"InterfaceIndex");//РќРµ РїРѕРґРґРµСЂР¶РёРІР°РµС‚СЃСЏ РІ Windows XP
 														pclsObj->Get(AdapterId, 0, &id, 0, 0);
 														SysFreeString(AdapterId);
 												
@@ -1772,7 +1772,7 @@ int GlobalFunction(int fIndex, HWND hdlg, BYTE flag, TCHAR *strBuffer)
 
 														sprintf(curNetworkAdapterName, "%S", desc.bstrVal);
 												
-														//if (NetworkConnectionIndex[SendMessage(GetDlgItem(hdlg, IDC_netEDIT), LB_GETCURSEL, 0, 0)] == V_I4(&id))//Не работает в Windows XP
+														//if (NetworkConnectionIndex[SendMessage(GetDlgItem(hdlg, IDC_netEDIT), LB_GETCURSEL, 0, 0)] == V_I4(&id))//РќРµ СЂР°Р±РѕС‚Р°РµС‚ РІ Windows XP
 														if (strcmp(curNetworkAdapterName, NetworkAdapterName[SendMessage(GetDlgItem(hdlg, IDC_netEDIT), LB_GETCURSEL, 0, 0)]) == 0)
 														{
 															// now we have the instance of the actual network card we want to modify
@@ -1863,8 +1863,8 @@ int GlobalFunction(int fIndex, HWND hdlg, BYTE flag, TCHAR *strBuffer)
 					/////////////////////////////////////////		
 					///Change IP by netsh
 					//sprintf_s(commandLine, MAX_PATH, "interface ip set address \"%s\" static %s %s %s 1", NetworkConnectionName[SendMessage(GetDlgItem(hdlg, IDC_netEDIT), LB_GETCURSEL, 0, 0)], ipText, subnetText, getawayText);
-					//Везде, кроме XP можно и нужно писать не ip, а ipv4
-					//Везде, кроме XP можно и нужно ссылаться на индекс подключения, а не на его имя (не NetworkConnectionName, а NetworkConnectionIndex)
+					//Р’РµР·РґРµ, РєСЂРѕРјРµ XP РјРѕР¶РЅРѕ Рё РЅСѓР¶РЅРѕ РїРёСЃР°С‚СЊ РЅРµ ip, Р° ipv4
+					//Р’РµР·РґРµ, РєСЂРѕРјРµ XP РјРѕР¶РЅРѕ Рё РЅСѓР¶РЅРѕ СЃСЃС‹Р»Р°С‚СЊСЃСЏ РЅР° РёРЅРґРµРєСЃ РїРѕРґРєР»СЋС‡РµРЅРёСЏ, Р° РЅРµ РЅР° РµРіРѕ РёРјСЏ (РЅРµ NetworkConnectionName, Р° NetworkConnectionIndex)
 					//ShellExecute(NULL, "open", "netsh.exe", commandLine, NULL, SW_HIDE);
 
 					/////////NAME && WORKGROUP
@@ -2095,11 +2095,11 @@ int GlobalFunction(int fIndex, HWND hdlg, BYTE flag, TCHAR *strBuffer)
 						{
 							if (shareFolderPath[j] == '/')
 							{
-								shareFolderPath[j] = '\\';//разворачиваем слеши
+								shareFolderPath[j] = '\\';//СЂР°Р·РІРѕСЂР°С‡РёРІР°РµРј СЃР»РµС€Рё
 							}
 						}
 
-						if (shareFolderPath[shareFolderLen - 1] == '\\')//Путь к папка не должен заканчиваться на слешь
+						if (shareFolderPath[shareFolderLen - 1] == '\\')//РџСѓС‚СЊ Рє РїР°РїРєР° РЅРµ РґРѕР»Р¶РµРЅ Р·Р°РєР°РЅС‡РёРІР°С‚СЊСЃСЏ РЅР° СЃР»РµС€СЊ
 						{
 							sprintf(&shareFolderPath[shareFolderLen - 1], "");
 						}			
@@ -2120,17 +2120,17 @@ int GlobalFunction(int fIndex, HWND hdlg, BYTE flag, TCHAR *strBuffer)
 						SHARE_INFO_502		inf;
 						DWORD				parm_err;
 												
-						if (CreateDirectoryWithUserFullControlACL(shareFolderPath, pSD))//Создадим директорию и раздадим ей права
+						if (CreateDirectoryWithUserFullControlACL(shareFolderPath, pSD))//РЎРѕР·РґР°РґРёРј РґРёСЂРµРєС‚РѕСЂРёСЋ Рё СЂР°Р·РґР°РґРёРј РµР№ РїСЂР°РІР°
 						{
-							memset(&inf, 0, sizeof(inf));								//Обнуляем структуру
-							inf.shi502_netname				= (LPWSTR)Wnetname;			//Имя шаринга
-							inf.shi502_type					= STYPE_DISKTREE;			//расшариваем папку
-							inf.shi502_remark				= L"Shared_By_Astro";		//Примечание. Хорошо наблюдается из консоли 'net share'
-							inf.shi502_permissions			= ACCESS_ALL;				//Доступ на чтение и исполнение
-							inf.shi502_max_uses				= 4;						//Ограничение на макс. кол-во подключеных юзеров
-							inf.shi502_path					= (LPWSTR)WshareFolderPath; //Собственно папка, которую расшариваем
-							inf.shi502_passwd				= NULL;						//Без пароля
-							inf.shi502_security_descriptor	= pSD;						//Права
+							memset(&inf, 0, sizeof(inf));								//РћР±РЅСѓР»СЏРµРј СЃС‚СЂСѓРєС‚СѓСЂСѓ
+							inf.shi502_netname				= (LPWSTR)Wnetname;			//РРјСЏ С€Р°СЂРёРЅРіР°
+							inf.shi502_type					= STYPE_DISKTREE;			//СЂР°СЃС€Р°СЂРёРІР°РµРј РїР°РїРєСѓ
+							inf.shi502_remark				= L"Shared_By_Astro";		//РџСЂРёРјРµС‡Р°РЅРёРµ. РҐРѕСЂРѕС€Рѕ РЅР°Р±Р»СЋРґР°РµС‚СЃСЏ РёР· РєРѕРЅСЃРѕР»Рё 'net share'
+							inf.shi502_permissions			= ACCESS_ALL;				//Р”РѕСЃС‚СѓРї РЅР° С‡С‚РµРЅРёРµ Рё РёСЃРїРѕР»РЅРµРЅРёРµ
+							inf.shi502_max_uses				= 4;						//РћРіСЂР°РЅРёС‡РµРЅРёРµ РЅР° РјР°РєСЃ. РєРѕР»-РІРѕ РїРѕРґРєР»СЋС‡РµРЅС‹С… СЋР·РµСЂРѕРІ
+							inf.shi502_path					= (LPWSTR)WshareFolderPath; //РЎРѕР±СЃС‚РІРµРЅРЅРѕ РїР°РїРєР°, РєРѕС‚РѕСЂСѓСЋ СЂР°СЃС€Р°СЂРёРІР°РµРј
+							inf.shi502_passwd				= NULL;						//Р‘РµР· РїР°СЂРѕР»СЏ
+							inf.shi502_security_descriptor	= pSD;						//РџСЂР°РІР°
 							res = NetShareAdd(NULL, 502, (LPBYTE)&inf, &parm_err); 
 
 							if (res != NERR_Success)
