@@ -593,7 +593,7 @@ int GlobalFunction(int fIndex, HWND hdlg, BYTE flag, TCHAR* strBuffer)
 			OSVERSIONINFO osver = { sizeof(osver) };
 			if (GetVersionEx(&osver) && osver.dwMajorVersion >= 6)
 			{
-				DWORD dRes = PowerSettingAccessCheck(ACCESS_ACTIVE_SCHEME, NULL);// GUID *PowerGuid);
+				DWORD dRes = PowerSettingAccessCheck(ACCESS_ACTIVE_SCHEME, NULL);
 				std::string str("PowerSettingAccessCheck res = ");
 				char buffer[65];
 				str += _itot(dRes, buffer, 10); //ERROR_ACCESS_DISABLED_BY_POLICY
@@ -604,28 +604,28 @@ int GlobalFunction(int fIndex, HWND hdlg, BYTE flag, TCHAR* strBuffer)
 				str += _itot(dRes, buffer, 10);
 				str += _T("\r\n");
 				WriteFile(hLog, &str[0], str.size(), 0, 0);
-
 			}
-			else
-			{
-				unsigned int ps;
-				POWER_POLICY pp;
 
-				SystemParametersInfo(SPI_SETSCREENSAVEACTIVE, 0, NULL, 0);
-
-				GetActivePwrScheme(&ps);
-				ReadPwrScheme(ps, &pp);
-
-				pp.user.VideoTimeoutAc = 0;
-				pp.user.VideoTimeoutDc = 0;
-				pp.user.SpindownTimeoutAc = 0;
-				pp.user.SpindownTimeoutDc = 0;
-				pp.user.IdleTimeoutAc = 0;
-				pp.user.IdleTimeoutDc = 0;
-
-				SetActivePwrScheme(ps, 0, &pp);
-			}
 			CloseHandle(hLog);
+
+			unsigned int ps;
+			POWER_POLICY pp;
+
+			SystemParametersInfo(SPI_SETSCREENSAVEACTIVE, 0, NULL, 0);
+
+			GetActivePwrScheme(&ps);
+			ReadPwrScheme(ps, &pp);
+
+			pp.user.VideoTimeoutAc = 0;
+			pp.user.VideoTimeoutDc = 0;
+			pp.user.SpindownTimeoutAc = 0;
+			pp.user.SpindownTimeoutDc = 0;
+			pp.user.IdleTimeoutAc = 0;
+			pp.user.IdleTimeoutDc = 0;
+
+			SetActivePwrScheme(ps, 0, &pp);
+
+
 		}
 		break;
 		}
@@ -654,7 +654,7 @@ int GlobalFunction(int fIndex, HWND hdlg, BYTE flag, TCHAR* strBuffer)
 		break;
 		}
 	}
-	break;	
+	break;
 	case 7://void BackGround()
 	{
 		switch (flag)
@@ -721,7 +721,7 @@ int GlobalFunction(int fIndex, HWND hdlg, BYTE flag, TCHAR* strBuffer)
 		}
 		}
 	}
-	break;	
+	break;
 	break;
 	default:
 		break;

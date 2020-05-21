@@ -1,0 +1,2 @@
+PowerSettingAccessCheck res = 0
+PowerSetActiveScheme res = 0

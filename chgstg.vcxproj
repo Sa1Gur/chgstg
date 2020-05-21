@@ -28,7 +28,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v100</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -121,7 +121,7 @@
       <Culture>0x0419</Culture>
     </ResourceCompile>
     <Link>
-      <OutputFile>.\$(Configuration)\$(PlatformTarget)\ChgStg.ex1</OutputFile>
+      <OutputFile>.\$(Configuration)\$(PlatformTarget)\LightChgStg.ex1</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <ProgramDatabaseFile>.\Release/SNCREATE.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
@@ -163,7 +163,7 @@
       <Culture>0x0419</Culture>
     </ResourceCompile>
     <Link>
-      <OutputFile>.\$(Configuration)\$(PlatformTarget)/ChgStg64.ex1</OutputFile>
+      <OutputFile>.\$(Configuration)\$(PlatformTarget)/LightChgStg64.ex1</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <ProgramDatabaseFile>.\Release/SNCREATE.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
